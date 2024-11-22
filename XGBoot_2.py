@@ -55,12 +55,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
 # Define the hyperparameter grid
 param_grid = {
-    "max_depth": [3, 4, 5, 6, 7, 8, 9, 10],
-    "learning_rate": [0.1, 0.01, 0.001, 0.05, 0.02, 0.2, 0.03, 0.3, 0.04, 0.4, 0.05],
-    "min_child_weight": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    "gamma": [0.5, 1, 1.5, 2, 5],
-    "subsample": [0.6, 0.8, 1.0, 0.9, 0.7, 0.5],
-    "colsample_bytree": [0.6, 0.8, 1.0, 0.7, 0.9, 0.5],
+    "eta": [0.3, 0.2, 0.1],
+    "max_depth": [4, 5, 6, 7, 8],
+    "learning_rate": [0.1, 0.01, 0.05, 0.2],
+    "min_child_weight": [1, 3, 5, 7],
+    "gamma": [0, 0.5, 1, 2],
+    "subsample": [0.6, 0.8, 1.0],
 }
 
 # Create the XGBoost model object with early stopping in the constructor
@@ -89,7 +89,7 @@ print("Best score: ", grid_search.best_score_)
 best_params = grid_search.best_params_
 
 # Create a filename with the algorithm name and current date-time
-filename = f"XGBoost_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+filename = f"XGBoost2_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
 
 # Save the best parameters to the file
 with open(filename, "w") as file:
